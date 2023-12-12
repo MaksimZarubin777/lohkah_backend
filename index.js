@@ -6,7 +6,7 @@ const { createUser, login } = require('./controllers/users')
 const { addLesson, addWord } = require('./controllers/lessons')
 const app = express()
 
-mongoose.connect('mongodb://localhost:3306/dvfustuden');
+mongoose.connect('mongodb://89.111.140.120:27017/dvfustude2');
 
 app.listen(PORT, () => {
   console.log('da', PORT)
