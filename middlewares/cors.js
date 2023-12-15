@@ -6,7 +6,7 @@ const allowedCors = [
   'leka-english.online',
 ];
 
-
+console.log('testing CORS111', req)
 function handleCors(req, res, next) {
   const { origin } = req.headers;
   const { method } = req;
