@@ -6,9 +6,11 @@ const allowedCors = [
   'leka-english.online',
 ];
 
+
 function handleCors(req, res, next) {
   const { origin } = req.headers;
   const { method } = req;
+  console.log('testing CORS', origin, method)
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
   const requestHeaders = req.headers['access-control-request-headers'];
   if (allowedCors.includes(origin)) {
