@@ -29,6 +29,7 @@ const createUser = (req, res, next) => {
 
 const login = (req, res, next) => {
   const { name, password } = req.body
+  console.log(name, password, 'eto parol i login')
   return User.findOne({name}).select('+password')
     .then((user) => {
       if (!user) {
