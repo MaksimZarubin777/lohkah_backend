@@ -10,6 +10,10 @@ const app = express()
 mongoose.connect('mongodb://89.111.140.120:27017/leka');
 
 console.log('test is starting 1')
+app.use((req, res, next) => {
+  console.log('Incoming request:', req.method, req.url);
+  next();
+});
 app.listen(PORT, () => {
   console.log('da', PORT)
 })

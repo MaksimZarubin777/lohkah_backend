@@ -8,7 +8,7 @@ const allowedCors = [
 
 console.log('testing CORS111')
 function handleCors(req, res, next) {
-  console.log('testing CORS222', req)
+ 
   const { origin } = req.headers;
   const { method } = req;
   console.log('testing CORS', origin, method)
