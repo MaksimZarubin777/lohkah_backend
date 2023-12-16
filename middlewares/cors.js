@@ -1,7 +1,7 @@
 const allowedCors = [
   'http://localhost:3000',
   'https://localhost:3000',
-  'http://leka-english.online',
+  'http://www.leka-english.online',
   'https://www.leka-english.online',
   'leka-english.online',
 ];
