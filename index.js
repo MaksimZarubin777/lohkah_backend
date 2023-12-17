@@ -7,7 +7,7 @@ const { addLesson, addWord } = require('./controllers/lessons')
 const { handleCors } = require('./middlewares/cors')
 const app = express()
 
-mongoose.connect('mongodb://UserLeka:1234567890@89.111.140.120:27017/?authMechanism=DEFAULT');
+mongoose.connect('mongodb://LekaAdmin:1234567890@89.111.140.120:27017/?authMechanism=DEFAULT');
 
 console.log('test is starting 1')
 app.use((req, res, next) => {
