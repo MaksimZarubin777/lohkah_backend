@@ -2,8 +2,11 @@ const allowedCors = [
   'http://localhost:3000',
   'https://localhost:3000',
   'http://www.leka-english.online',
+  'http://leka-english.online',
   'https://www.leka-english.online',
+  'https://leka-english.online',
   'leka-english.online',
+  'www.leka-english.online',
 ];
 
 console.log('testing CORS111')
