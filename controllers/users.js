@@ -3,6 +3,7 @@ const BadRequestError = require('../errors/BadRequestError');
 const ConflictError = require('../errors/ConflictError');
 const User = require('../models/user')
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const createUser = (req, res, next) => {
   const { name, department, password, confirmation} = req.body
@@ -15,6 +16,11 @@ const createUser = (req, res, next) => {
           bcrypt.hash(password, 10)
             .then((hash) => User.create( {name, department, password:hash} ))
           .then((user) => {
+            const token = jwt.sign({ _id: user._id.toString() }, config.env === 'production' ? config.jwtSecret : 'dev-secret', { expiresIn: 3600 });
+            res.cookie('jwt', token, {
+              maxAge: 3600000,
+              httpOnly: true,
+            });
             res.status(OK_STATUS).send({ data: user })
           })
           .catch((err) => {
@@ -43,6 +49,11 @@ const login = (req, res, next) => {
           return user;
         })
         .then((user) => {
+          const token = jwt.sign({ _id: user._id.toString() }, config.env === 'production' ? config.jwtSecret : 'dev-secret', { expiresIn: 3600 });
+      res.cookie('jwt', token, {
+        maxAge: 3600000,
+        httpOnly: true,
+      });
           res.status(OK_STATUS).send({ data: user})
         })
       }
@@ -51,7 +62,8 @@ const login = (req, res, next) => {
  
 const getUserData = (req, res, next) => {
   // const userId = req.user._id;
-  console.log(req, 'loh')
+  console.log(req.body, 'loh')
+  console.log(req.user, 'loh')
 
   // User.findOne({ _id: userId })
   //   .then((user) => {
