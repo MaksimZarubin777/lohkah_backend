@@ -3,6 +3,8 @@ const Department = require('../models/lesson')
 
 const addLesson = (req, res, next) => {
   const { department, lessonName, cn, eng, example} = req.body
+  console.log(req.body, 'backend')
+  console.log({department})
   Department.findOne({department})
   .then((dep) => {
     if (!dep) {
