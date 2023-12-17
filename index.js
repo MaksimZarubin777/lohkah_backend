@@ -23,7 +23,6 @@ app.use(handleCors)
 
 app.post('/signup', createUser)
 app.post('/signin', login)
-app.use(auth)
 app.post('/add', addLesson)
 app.get('/', allContent)
 app.get('/profile', getUserData)

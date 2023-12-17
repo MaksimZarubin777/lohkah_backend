@@ -16,11 +16,6 @@ const createUser = (req, res, next) => {
           bcrypt.hash(password, 10)
             .then((hash) => User.create( {name, department, password:hash} ))
           .then((user) => {
-            const token = jwt.sign({ _id: user._id.toString() }, 'dev-secret', { expiresIn: 3600 });
-            res.cookie('jwt', token, {
-              maxAge: 3600000,
-              httpOnly: true,
-            });
             res.status(OK_STATUS).send({ data: user })
           })
           .catch((err) => {
@@ -49,12 +44,6 @@ const login = (req, res, next) => {
           return user;
         })
         .then((user) => {
-        console.log(user, 'yyyyyy')
-      const token = jwt.sign({ _id: user._id.toString() }, 'dev-secret', { expiresIn: 3600 });
-      res.cookie('jwt', token, {
-        maxAge: 3600000,
-        httpOnly: true,
-      });
           res.status(OK_STATUS).send({ data: user})
         })
       }
@@ -64,7 +53,7 @@ const login = (req, res, next) => {
 const getUserData = (req, res, next) => {
   // const userId = req.user._id;
   console.log(req.params, 'loh')
-  console.log(req.user, 'loh')
+  console.log(req, 'loh')
 
   // User.findOne({ _id: userId })
   //   .then((user) => {
