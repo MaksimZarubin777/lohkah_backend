@@ -2,7 +2,7 @@ const { OK_STATUS } = require('../constants')
 const Department = require('../models/lesson')
 
 const allContent = (req, res, next) => {
-  Department.find({})
+  Department.find()
     .then((departments) => {
       res.status(OK_STATUS).send({ data: departments });
     })
