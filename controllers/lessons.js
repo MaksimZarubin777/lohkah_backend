@@ -1,6 +1,14 @@
 const { OK_STATUS } = require('../constants')
 const Department = require('../models/lesson')
 
+const allContent = (req, res, next) => {
+  Department.find({})
+    .then((departments) => {
+      res.status(OK_STATUS).send({ data: departments });
+    })
+    .catch(next);
+};
+
 const addLesson = (req, res, next) => {
   const { department, lessonName, cn, eng, example} = req.body
   console.log(req.body, 'backend')
