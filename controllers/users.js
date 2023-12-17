@@ -62,7 +62,7 @@ const login = (req, res, next) => {
  
 const getUserData = (req, res, next) => {
   // const userId = req.user._id;
-  console.log(req.body, 'loh')
+  console.log(req.params, 'loh')
   console.log(req.user, 'loh')
 
   // User.findOne({ _id: userId })
