@@ -51,7 +51,7 @@ const login = (req, res, next) => {
  
 const getUserData = (req, res, next) => {
   // const userId = req.user._id;
-  console.log(req.user)
+  console.log(req.user, 'loh')
 
   // User.findOne({ _id: userId })
   //   .then((user) => {
