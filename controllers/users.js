@@ -16,7 +16,7 @@ const createUser = (req, res, next) => {
           bcrypt.hash(password, 10)
             .then((hash) => User.create( {name, department, password:hash} ))
           .then((user) => {
-            const token = jwt.sign({ _id: user._id.toString() }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
+            const token = jwt.sign({ _id: user._id.toString() }, 'dev-secret', { expiresIn: 3600 });
             res.cookie('jwt', token, {
               maxAge: 3600000,
               httpOnly: true,
@@ -49,7 +49,8 @@ const login = (req, res, next) => {
           return user;
         })
         .then((user) => {
-          const token = jwt.sign({ _id: user._id.toString() }, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
+        console.log(user, 'yyyyyy')
+      const token = jwt.sign({ _id: user._id.toString() }, 'dev-secret', { expiresIn: 3600 });
       res.cookie('jwt', token, {
         maxAge: 3600000,
         httpOnly: true,
