@@ -50,17 +50,17 @@ const login = (req, res, next) => {
 }
  
 const getUserData = (req, res, next) => {
-  const userId = req.user._id;
+  // const userId = req.user._id;
   console.log(req.user)
-  console.log(userId)
-  User.findOne({ _id: userId })
-    .then((user) => {
-      if (!user) {
-        throw new NotFoundError(USER_NOT_FOUND);
-      }
-      res.send({ data: user });
-    })
-    .catch(next);
+
+  // User.findOne({ _id: userId })
+  //   .then((user) => {
+  //     if (!user) {
+  //       throw new NotFoundError(USER_NOT_FOUND);
+  //     }
+  //     res.send({ data: user });
+  //   })
+  //   .catch(next);
 };
 
 module.exports = {
