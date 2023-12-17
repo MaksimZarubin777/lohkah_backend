@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const {PORT = 3000} = process.env 
 const User = require('./models/user')
 const { createUser, login } = require('./controllers/users')
-const { addLesson, addWord } = require('./controllers/lessons')
+const { addLesson, addWord, allContent } = require('./controllers/lessons')
 const { handleCors } = require('./middlewares/cors')
 const app = express()
 
@@ -23,3 +23,4 @@ app.use(handleCors)
 app.post('/signup', createUser)
 app.post('/signin', login)
 app.post('/add', addLesson)
+app.get('/', allContent)

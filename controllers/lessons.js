@@ -98,4 +98,5 @@ const addLesson = (req, res, next) => {
 
 module.exports = {
   addLesson,
+  allContent
 }
