@@ -5,6 +5,7 @@ const User = require('./models/user')
 const { createUser, login, getUserData } = require('./controllers/users')
 const { addLesson, addWord, allContent } = require('./controllers/lessons')
 const { handleCors } = require('./middlewares/cors')
+const cookieParser = require('cookie-parser')
 const app = express()
 
 mongoose.connect('mongodb://LekaAdmin:1234567890@89.111.140.120:27017/leka');
@@ -19,6 +20,7 @@ app.listen(PORT, () => {
 })
 app.use(express.json());
 app.use(handleCors)
+app.use(cookieParser)
 
 app.post('/signup', createUser)
 app.post('/signin', login)
