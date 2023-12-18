@@ -44,12 +44,6 @@ const login = (req, res, next) => {
           return user;
         })
         .then((user) => {
-          const token = jwt.sign({ _id: user._id.toString() }, 'dev-secret', { expiresIn: 3600 });
-          res.cookie('jwt', token, {
-            maxAge: 3600000,
-            httpOnly: true,
-          });
-          console.log(token, 'token')
           res.status(OK_STATUS).send({ data: user})
         })
       }
