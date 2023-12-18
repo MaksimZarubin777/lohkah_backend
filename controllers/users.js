@@ -52,7 +52,7 @@ const login = (req, res, next) => {
 }
  
 const getUserData = (req, res, next) => {
-console.log(req.cookie, 'cookies')
+console.log(req.cookies, 'cookies')
 
   // User.findOne({ _id: userId })
   //   .then((user) => {
