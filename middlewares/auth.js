@@ -3,7 +3,7 @@ const ConflictError = require('../errors/ConflictError');
 
 module.exports = (req, res, next) => {
   console.log('auth started')
-  console.log('auth cookies', req.cookies)
+  console.log('auth cookies', req)
   const { jwt } = req.cookies;
   if (!jwt) {
     return next(new ConflictError);
