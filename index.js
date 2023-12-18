@@ -20,7 +20,7 @@ app.listen(PORT, () => {
 })
 app.use(express.json());
 app.use(handleCors)
-app.use(cookieParser)
+app.use(cookieParser())
 
 app.post('/signup', createUser)
 app.post('/signin', login)
