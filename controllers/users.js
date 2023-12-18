@@ -44,6 +44,7 @@ const login = (req, res, next) => {
           return user;
         })
         .then((user) => {
+          res.cookie('_id', user._id, {maxAge: 3600000 * 24 * 7, httpOnly: true})
           res.status(OK_STATUS).send({ data: user})
         })
       }
@@ -51,9 +52,7 @@ const login = (req, res, next) => {
 }
  
 const getUserData = (req, res, next) => {
-  // const userId = req.user._id;
-  console.log(req.params, 'loh')
-  console.log(req, 'loh')
+console.log(req.cookie, 'cookies')
 
   // User.findOne({ _id: userId })
   //   .then((user) => {
