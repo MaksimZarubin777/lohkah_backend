@@ -30,7 +30,6 @@ const createUser = (req, res, next) => {
 
 const login = (req, res, next) => {
   const { name, password } = req.body
-  console.log(name, password, 'eto parol i login')
   return User.findOne({name}).select('+password')
     .then((user) => {
       if (!user) {
@@ -52,16 +51,16 @@ const login = (req, res, next) => {
 }
  
 const getUserData = (req, res, next) => {
-console.log(req.cookies, 'cookies tut')
-
-  // User.findOne({ _id: userId })
-  //   .then((user) => {
-  //     if (!user) {
-  //       throw new NotFoundError(USER_NOT_FOUND);
-  //     }
-  //     res.send({ data: user });
-  //   })
-  //   .catch(next);
+  const userId = req.cookies._id
+  User.findOne({ _id: userId })
+    .then((user) => {
+      if (!user) {
+        throw new NotFoundError(USER_NOT_FOUND);
+      }
+      res.send({ data: user });
+      console.log(user, 'tut dolzhen but user iz baka')
+    })
+    .catch(next);
 };
 
 module.exports = {
