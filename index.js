@@ -1,28 +1,43 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const {PORT = 3000} = process.env 
-const User = require('./models/user')
-const { createUser, login, getUserData } = require('./controllers/users')
-const { addLesson, addWord, allContent } = require('./controllers/lessons')
-const { handleCors } = require('./middlewares/cors')
+const express = require('express');
+const mongoose = require('mongoose');
+const {PORT = 3000} = process.env ;
+const { createUser, login, getUserData } = require('./controllers/users');
+const { 
+  addLesson, 
+  allContent, 
+  deleteWord, 
+  deleteLesson, 
+  deleteDepartment, 
+  changeDepartment, 
+  changeLesson, 
+  changeWord 
+} = require('./controllers/lessons');
+const { handleCors } = require('./middlewares/cors');
 const cookieParser = require('cookie-parser')
-const app = express()
+const app = express();
 
 mongoose.connect('mongodb://LekaAdmin:1234567890@89.111.140.120:27017/leka');
 
 app.use((req, res, next) => {
-  console.log('Incoming request:', req.method, req.url);
   next();
 });
-app.listen(PORT, () => {
-  console.log('da', PORT)
-})
-app.use(express.json());
-app.use(handleCors)
-app.use(cookieParser())
 
-app.post('/signup', createUser)
-app.post('/signin', login)
-app.post('/add', addLesson)
-app.get('/', allContent)
-app.get('/profile', getUserData)
+app.listen(PORT, () => {
+  console.log('STARTED AT ', PORT)
+});
+
+app.use(express.json());
+app.use(handleCors);
+app.use(cookieParser());
+
+app.post('/signup', createUser);
+app.post('/signin', login);
+app.post('/add', addLesson);
+app.get('/', allContent);
+app.get('/profile', getUserData);
+app.delete('/:departmentId/:lessonId/:wordId', deleteWord);
+app.delete('/:departmentId/:lessonId', deleteLesson);
+app.delete('/:departmentId', deleteDepartment);
+app.patch('/:departmentId', changeDepartment);
+app.patch('/:departmentId/:lessonId', changeLesson);
+app.patch('/:departmentId/:lessonId/:wordId', changeWord);

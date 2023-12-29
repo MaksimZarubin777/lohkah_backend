@@ -1,5 +1,6 @@
 const allowedCors = [
   'http://localhost:3000',
+  'http://localhost:3001',
   'https://localhost:3000',
   'http://www.leka-english.online',
   'http://leka-english.online',
@@ -9,12 +10,9 @@ const allowedCors = [
   'www.leka-english.online',
 ];
 
-console.log('testing CORS111')
 function handleCors(req, res, next) {
- 
   const { origin } = req.headers;
   const { method } = req;
-  console.log('testing CORS', origin, method)
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
   const requestHeaders = req.headers['access-control-request-headers'];
   if (allowedCors.includes(origin)) {
