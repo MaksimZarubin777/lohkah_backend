@@ -4,6 +4,14 @@ const ConflictError = require('../errors/ConflictError');
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 
+const getAllUsers = (req, res) => {
+  User.find()
+  .then((users) => {
+    console.log(users)
+    res.status(OK_STATUS).send({ data: users});
+  })
+}
+
 const createUser = (req, res, next) => {
   const { name, department, password, confirmation} = req.body;
   User.findOne({ name })
@@ -65,4 +73,6 @@ module.exports = {
   createUser,
   login,
   getUserData,
+  getAllUsers,
+
 };
