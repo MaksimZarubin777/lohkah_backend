@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const {PORT = 3000} = process.env ;
-const { createUser, login, getUserData, getAllUsers, getAllDepartments } = require('./controllers/users');
+const { createUser, login, getUserData, getAllUsers } = require('./controllers/users');
 const { 
   addLesson, 
   allContent, 
@@ -13,7 +13,7 @@ const {
   changeWord 
 } = require('./controllers/lessons');
 const { handleCors } = require('./middlewares/cors');
-const { addTestResult, getResults, getResultsByDepartment } = require('./controllers/testResults');
+const { addTestResult, getResults } = require('./controllers/testResults');
 const cookieParser = require('cookie-parser')
 const app = express();
 
